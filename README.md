@@ -26,8 +26,7 @@ This component accepts the following props:
 | Name                   | Required      | Description |
 | ---------------------- | ------------- | ----------- |
 | ref            |    yes        | A reference to the editor componment to be used to retrieve its contents using     this.webViewQuillEditor.getDelta();
-| getDeltaCallback  |    yes        | Function called in response to a call to this.webViewQuillEditor.getDelta().  It will receive a Delta object containing the contents of editor
- |
+| getDeltaCallback  |    yes        | Function called in response to a call to this.webViewQuillEditor.getDelta().  It will receive a Delta object containing the contents of editor |
 | contentToDisplay     |    no        | A Delta object that will be displayed by the editor when it mounts|
 
 
@@ -45,8 +44,8 @@ This component accepts the following props:
 
 | Name                   | Required      | Description |
 | ---------------------- | ------------- | ----------- |
-| ref            |    yes        | A reference to the editor componment to be used to retrieve its contents using     this.webViewQuillEditor.getDelta();
-| contentToDisplay     |    no        | A Delta object that will be displayed by the editor when it mounts|
+| ref            |    yes        | A reference to the editor componment to be used to update its contents using     this.webViewQuillViewer.sendContentToViewer(delta);
+| contentToDisplay     |    no        | A Delta object that will be displayed by the viewer when it mounts|
 
 
 ## Example Application
