@@ -1,0 +1,23 @@
+{
+  "name": "react-native-webview-quilljs",
+  "version": "0.0.1",
+  "description": "A Quill.js component for React Native apps that have to avoid using native code",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reggie3/react-native-webview-quilljs.git"
+  },
+  "keywords": [
+    "react-native",
+    "quilljs"
+  ],
+  "author": "Reginald Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reggie3/react-native-webview-quilljs/issues"
+  },
+  "homepage": "https://github.com/reggie3/react-native-webview-quilljs#readme"
+}
