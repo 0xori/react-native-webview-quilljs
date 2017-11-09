@@ -21,7 +21,7 @@ export default class WebViewQuillEditor extends React.Component {
     // register listeners to listen for events from the html
     // we'll receive a nonce once the requestPaymentMethodComplete is completed
     this.registerMessageListeners();
-  console.log('wbvw quill mounted');
+    //console.log('wbvw quill mounted');
   }
 
   registerMessageListeners = () => {
@@ -61,6 +61,10 @@ export default class WebViewQuillEditor extends React.Component {
     }
   };
 
+  webViewLoded=()=>{
+    this.setState({showActivityIndicator: false});
+  }
+
   // get the contents of the editor.  The contents will be in the Delta format
   // defined here: https://quilljs.com/docs/delta/
   getDelta = () => {
@@ -75,6 +79,7 @@ export default class WebViewQuillEditor extends React.Component {
           backgroundColor: 'green'
         }}
       >
+       
         <WebView
           onLoad={this.sendContentToEditor}
           style={{
@@ -82,7 +87,19 @@ export default class WebViewQuillEditor extends React.Component {
           }}
           source={require('./dist/reactQuillEditor-index.html')}
           ref={component => (this.webview = component)}
+          onLoad={this.webViewLoded}
         />
+        {renderIf(this.state.showActivityIndicator)(
+          <View style={styles.activityOverlayStyle}>
+            <View style={styles.activityIndicatorContainer}>
+              <ActivityIndicator
+                size="large"
+                animating={this.state.showActivityIndicator}
+                color="blue"
+              />
+            </View>
+          </View>
+        )}
       </View>
     );
   };
@@ -96,7 +113,6 @@ WebViewQuillEditor.propTypes = {
 const styles = StyleSheet.create({
   activityOverlayStyle: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(150, 150, 150, .55)',
     marginHorizontal: 20,
     marginVertical: 60,
     display: 'flex',

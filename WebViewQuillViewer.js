@@ -11,17 +11,12 @@ import { WebView } from 'react-native-webview-messaging/WebView';
 import PropTypes from 'prop-types';
 
 export default class WebViewQuillViewer extends React.Component {
-  componentDidMount() {
-    // register listeners to listen for events from the html
-    // we'll receive a nonce once the requestPaymentMethodComplete is completed
-    this.registerMessageListeners();
-    // console.log('wbvw quill mounted');
+  constructor() {
+    super();
+    this.state = {
+      showActivityIndicator: true // flag to show activity indicator
+    };
   }
-
-  registerMessageListeners = () => {
-    const { messagesChannel } = this.webview;
-
-  };
 
   sendContentToViewer = (delta) => {
     if (this.props.hasOwnProperty('contentToDisplay')) {
@@ -33,7 +28,9 @@ export default class WebViewQuillViewer extends React.Component {
     }
   };
 
-
+  webViewLoded=()=>{
+    this.setState({showActivityIndicator: false});
+  }
   render = () => {
     return (
       <View
@@ -50,6 +47,17 @@ export default class WebViewQuillViewer extends React.Component {
           source={require('./dist/reactQuillViewer-index.html')}
           ref={component => (this.webview = component)}
         />
+        {renderIf(this.state.showActivityIndicator)(
+          <View style={styles.activityOverlayStyle}>
+            <View style={styles.activityIndicatorContainer}>
+              <ActivityIndicator
+                size="large"
+                animating={this.state.showActivityIndicator}
+                color="blue"
+              />
+            </View>
+          </View>
+        )}
       </View>
     );
   };
@@ -58,3 +66,28 @@ export default class WebViewQuillViewer extends React.Component {
 WebViewQuillViewer.propTypes = {
   contentToDisplay: PropTypes.object
 };
+
+const styles = StyleSheet.create({
+  activityOverlayStyle: {
+    ...StyleSheet.absoluteFillObject,
+    marginHorizontal: 20,
+    marginVertical: 60,
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderRadius: 5
+  },
+  activityIndicatorContainer: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 50,
+    alignSelf: 'center',
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1.0
+  }
+});
