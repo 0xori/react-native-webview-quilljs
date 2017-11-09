@@ -9,6 +9,7 @@ import React from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview-messaging/WebView';
 import PropTypes from 'prop-types';
+import renderIf from 'render-if';
 
 export default class WebViewQuillViewer extends React.Component {
   constructor() {
@@ -46,6 +47,7 @@ export default class WebViewQuillViewer extends React.Component {
           }}
           source={require('./dist/reactQuillViewer-index.html')}
           ref={component => (this.webview = component)}
+          onLoad={this.webViewLoded}
         />
         {renderIf(this.state.showActivityIndicator)(
           <View style={styles.activityOverlayStyle}>
