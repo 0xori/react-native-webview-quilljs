@@ -15,6 +15,7 @@ Creating a Quill.js editor with the standard toolbar:
             ref={component => (this.webViewQuillEditor = component)}
             getDeltaCallback={this.getDeltaCallback}
             contentToDisplay={contentToDisplay}
+            onLoad={this.onLoadCallback}
           />
 ~~~~
 
@@ -36,6 +37,7 @@ Creating a Delta viewer that can display content created with Quill.js:
 <WebViewQuillViewer
             ref={component => (this.webViewQuillViewer = component)}
             contentToDisplay={this.state.messageDelta}
+            onLoad={this.onLoadCallback}
           />
 ~~~
 
