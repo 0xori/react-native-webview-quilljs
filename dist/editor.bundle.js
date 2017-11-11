@@ -125,8 +125,6 @@ var ReactQuillEditor = function (_React$Component) {
         })
       });
 
-      // send a message to parent that the component is loaded
-      // RNMessageChannel.send('EDITOR_MOUNTED', {});
       this.registerMessageListeners();
     }
 

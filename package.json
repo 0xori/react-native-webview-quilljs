@@ -1,6 +1,6 @@
 {
   "name": "react-native-webview-quilljs",
-  "version": "0.1.1",
+  "version": "0.1.20",
   "description": "A Quill.js component for React Native apps that have to avoid using native code",
   "main": "index.js",
   "files": [
