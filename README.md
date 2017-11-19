@@ -56,7 +56,7 @@ This component accepts the following props:
 ## Example Application
 [React Native Webview Quill.js test application](https://github.com/reggie3/react-native-webview-quilljs-test-app)
 
-
+![Alt Text](react-native-webview-quilljs.gif)
 
 ## LICENSE
 
